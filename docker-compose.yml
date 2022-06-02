@@ -16,7 +16,7 @@ services:
       - HOST=0.0.0.0
       - PORT=8000
       - MONGO_URI=mongodb://mongo:27017/
-      - MONGO_DB_NAME=leiloes-rfb-tracker
+      - MONGO_DB_NAME=my-chess
       - PUBLIC_URL=http://localhost:8000
     build: ./backend
     ports:
