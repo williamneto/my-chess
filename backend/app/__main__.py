@@ -8,6 +8,8 @@ if __name__ == '__main__':
                     host=settings.HOST,
                     port=settings.PORT,
                     reload=True,
+                    proxy_headers=True, # THIS LINE
+                    forwarded_allow_ips='*', 
                     log_level="debug",
                     reload_excludes="*.session")
 

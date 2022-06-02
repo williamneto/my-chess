@@ -1,4 +1,4 @@
-import uuid
+import uuid, re
 from loguru import logger
 from fastapi import APIRouter, status, Request, HTTPException
 from fastapi.encoders import jsonable_encoder
@@ -36,7 +36,6 @@ async def new_match():
 async def enter_match(match_id: str, req: Request):
     db = await get_db_client()
     client_ip = req.client.host
-    logger.info(client_ip)
 
     match = await db["matchs"].find_one(
         {
