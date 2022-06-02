@@ -1,0 +1,37 @@
+version: '3.3'
+services:
+
+  mongo:
+    image: mongo:latest
+    restart: unless-stopped
+    volumes:
+      - ~/mongo:/data/db
+    command: mongod
+    ports:
+      - 27017:27017
+
+  backend:
+    environment:
+      - ENV=development
+      - HOST=0.0.0.0
+      - PORT=8000
+      - MONGO_URI=mongodb://mongo:27017/
+      - MONGO_DB_NAME=leiloes-rfb-tracker
+      - PUBLIC_URL=http://localhost:8000
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes: ["./backend/:/app"]
+    depends_on:
+      - mongo
+  
+  # frontend:
+  #   restart: always
+  #   build: ./frontend
+  #   stdin_open: true
+  #   environment:
+  #     - REACT_APP_API=http://localhost:8000
+  #   volumes: ['./frontend:/app']
+  #   ports:
+  #   - "3000:3000"
+  
