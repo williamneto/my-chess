@@ -10,6 +10,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import Match from './Match';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +19,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="/m/:mid" element={<Match />} />
         </Route>
       </Routes>
     </BrowserRouter>

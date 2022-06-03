@@ -9,7 +9,7 @@ if __name__ == '__main__':
                     port=settings.PORT,
                     reload=True,
                     proxy_headers=True, # THIS LINE
-                    forwarded_allow_ips='*', 
+                    forwarded_allow_ips='[::1]', 
                     log_level="debug",
                     reload_excludes="*.session")
 

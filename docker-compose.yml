@@ -17,7 +17,7 @@ services:
       - PORT=8000
       - MONGO_URI=mongodb://mongo:27017/
       - MONGO_DB_NAME=my-chess
-      - PUBLIC_URL=https://3fcf-2804-14d-1688-816f-bbfb-f1ff-6ed1-589.sa.ngrok.io
+      - PUBLIC_URL=https://b009-2804-14d-1688-816f-bbfb-f1ff-6ed1-589.sa.ngrok.io
     build: ./backend
     ports:
       - "8000:8000"
@@ -30,7 +30,7 @@ services:
   #   build: ./frontend
   #   stdin_open: true
   #   environment:
-  #     - REACT_APP_API=http://localhost:8000
+  #     - REACT_APP_API_HOST=http://localhost:8000
   #   volumes: ['./frontend:/app']
   #   ports:
   #   - "3000:3000"

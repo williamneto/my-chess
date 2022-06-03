@@ -1,6 +1,6 @@
 import uuid, re
 from loguru import logger
-from fastapi import APIRouter, status, Request, HTTPException
+from fastapi import APIRouter, status, Request, HTTPException, Body
 from fastapi.encoders import jsonable_encoder
 
 from app.database.mongodb import get_db_client
@@ -23,7 +23,9 @@ async def new_match():
     match = {
         "mid": match_id,
         "url": match_url,
-        "players": []
+        "players": [],
+        "moves": [],
+        "turn": 0
     }
 
     await db["matchs"].insert_one(
@@ -32,10 +34,10 @@ async def new_match():
 
     return match
 
-@router.get("/{match_id}")
-async def enter_match(match_id: str, req: Request):
+@router.post("/{match_id}")
+async def enter_match(match_id: str, req: Request, body: dict):
     db = await get_db_client()
-    client_ip = req.client.host
+    client_ip = body["player"]
 
     match = await db["matchs"].find_one(
         {
