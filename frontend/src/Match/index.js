@@ -4,6 +4,7 @@ import { Button, Container, Row, Col } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import useWebSocket from 'react-use-websocket';
 import { API_HOST, WS_HOST } from "../config"
+import Board from "./Board";
 
 const Match = () => {
     const { mid } = useParams()
@@ -85,6 +86,10 @@ const Match = () => {
                 { match && (
                     <>
                         <b>Player {match?.player + 1}</b>
+                        {match?.board && <Board 
+                            match={match}
+                            sendMove={sendMove}
+                        />}
 
                         <Row>
                             <Col>
