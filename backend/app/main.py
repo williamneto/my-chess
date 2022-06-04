@@ -29,8 +29,7 @@ async def websocket_endpoint(
     player: str,
 ):
     db = await get_db_client()
-    player = player
-    logger.info(player)
+    
     match = await db["matchs"].find_one(
         {
             "mid": match_id
@@ -49,9 +48,6 @@ async def websocket_endpoint(
 
     await websocket.accept()
     while True:
-            
-        
-
         data = await websocket.receive_text()
         data = json.loads(data)
         
@@ -71,6 +67,8 @@ async def websocket_endpoint(
                         "players": match["players"],
                         "moves": match["moves"],
                         "turn": match["turn"],
+                        "board": match["board"],
+                        "captures": match["captures"],
                         "player": match["players"].index(player)
                     }
                 )

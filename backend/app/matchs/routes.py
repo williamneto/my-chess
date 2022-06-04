@@ -4,7 +4,7 @@ from fastapi import APIRouter, status, Request, HTTPException, Body
 from fastapi.encoders import jsonable_encoder
 
 from app.database.mongodb import get_db_client
-from app.core.config import settings
+from app.core.config import settings, BOARD
 
 router = APIRouter(
     prefix="/matchs"
@@ -25,6 +25,11 @@ async def new_match():
         "url": match_url,
         "players": [],
         "moves": [],
+        "board": BOARD,
+        "captures": {
+            "0": [],
+            "1": []
+        },
         "turn": 0
     }
 
