@@ -1,0 +1,10 @@
+.houseStyle {
+    width: "30px";
+    height: "30px";
+}
+.blackHouse {
+    background-color: black;
+}
+.whiteHouse {
+    background-color: white;
+}

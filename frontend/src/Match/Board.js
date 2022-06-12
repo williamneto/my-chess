@@ -1,4 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap"
+import "./styles/board.module.css"
 
 const Board =  ({match, sendMove }) => {
 
@@ -12,7 +13,7 @@ const Board =  ({match, sendMove }) => {
             for (var y = 0; y < 8; y++) {
                 let house = `${currentLetter}${y+1}`
                 columns.push(
-                    <Col>
+                    <Col >
                         <b>
                             {house}
                         </b>
@@ -34,7 +35,7 @@ const Board =  ({match, sendMove }) => {
             </Container>
         )
     }
-    console.log(match)
+
     return (
         <>
             {renderBoard(match.board)}
